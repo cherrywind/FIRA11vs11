@@ -1,3 +1,3 @@
 # FIRA11vs11
 NPU SOCCER ROBOT BASE 11VS11 GROUP
- zcr 2016年8月6日与西北工业大学
+ zcr 2016年8月6日 于西北工业大学
