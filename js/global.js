@@ -125,7 +125,8 @@ function prepareGallary() {
 
 function loadEvents() {
 	prepareGallary();
+	highLightPage();
 }
-addLoadEvent(highLightPage);
+// addLoadEvent(highLightPage);
 // addLoadEvent(prepareGallary);
 addLoadEvent(loadEvents);
