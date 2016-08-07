@@ -87,8 +87,8 @@ a {
 
 #home #main-content-wrapper #header #hot {
 	position: absolute;
-	top: 65px;
-	right: 295px;
+	top: 100px;
+	right: 308px;
 	z-index: 999;
 }
 
