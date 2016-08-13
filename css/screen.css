@@ -684,3 +684,19 @@ a {
 	margin-bottom: 15px;
 	font-family: 'YouYuan';
 }
+
+/*---------------返回顶部按钮---------------------------------------*/
+a.backToTop-button {
+	height: 71px;
+	width: 71px;
+	position: fixed;
+	left: 60%;
+	bottom: 30px;
+	margin-left: 420px;
+	background: url(../images/backToTop.jpg) no-repeat;
+	display: none;/*默认不显示，即一开始打开页面，不显示“回到顶部”按钮*/
+}
+a.backToTop-button:hover {
+	background: url(../images/backToTop.jpg) no-repeat -88px top;
+	
+}

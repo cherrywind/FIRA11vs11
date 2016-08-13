@@ -123,9 +123,87 @@ function prepareGallary() {
 	}
 }
 
+/*---------返回顶部动画------------------------------------*/
+
+function backToTop() {
+	var button = document.getElementsByClassName("backToTop-button")[0];
+	// console.log(button);
+	var timer = null;//定时器
+	//页面可视区的高度,Chrome显示626，Firefox显示433,IE显示627，Opera显示613
+	var clientHeight = document.documentElement.clientHeight;
+
+	/***[注意]:以"/三个星/"包起来的代码按网上说的可以实现滚动中往下滚鼠标滚轮就可以使滚动条停下，
+	 ***但是自己试了一下，只有在IE中可以，其他浏览器好像都必须在滚动条滚动的时候用鼠标拖拽住它
+	 ***才可以，然而滚动条移动速度快，又很小，感觉难度挺大...
+	 ***/
+	
+	var isAtTop = true;//是否在顶部
+	window.onscroll = function () {//页面滚动时触发
+		// console.log("页面滚动中...");
+
+		/***/
+		if(!isAtTop) {
+			clearInterval(timer);
+		}
+		isAtTop = false;
+		/***/
+
+		var toTopDis = document.body.scrollTop || document.documentElement.scrollTop;
+		if(toTopDis > clientHeight + 20) {
+			button.style.display = 'block';
+		}
+		else {
+			button.style.display = 'none';
+		}
+	}
+	
+
+	button.onclick = function() {
+		// alert(button);
+		// alert(clientHeight);
+
+		//设置定时器
+		timer = setInterval(function() {
+			//获取滚动条到顶部的距离
+			var toTopDis = document.body.scrollTop || document.documentElement.scrollTop;
+			// console.log(toTopDis);
+
+			/*[注意]原来是Math.floor(toTopDis / 13)，相对应的，下面
+			 *是document.documentElement.scrollTop = toTopDis - speed，这样的话，滚动条会始终无法自动
+			 *回到顶部（即toTopDis为0的状态），这样就不能满足clearInterval函数的执行条件，导致非得手动
+			 *把滚动条拖动（或者用鼠标滚轮）到顶部，才能继续往下滑动浏览页面，否则用鼠标滚轮（或甚至
+			 *强行往下拖动滚动条）往下滚动页面时，就一直滚不下去。
+			 *改成Math.floor(-toTopDis / 13)之后（下面相应的改成toTopDis + speed），就可以解决这个bug。
+			 *Why？
+			 */
+			var speed = Math.floor(-toTopDis / 8);
+			// console.log(speed);
+
+			//IE and Firefox
+			if(document.documentElement.scrollTop) {
+				document.documentElement.scrollTop = toTopDis + speed;
+			}
+			//Chrome and Opera
+			else if(document.body.scrollTop) {
+				document.body.scrollTop = toTopDis + speed;
+			}
+
+			/***/
+			isAtTop = true;
+			/***/
+
+			if(toTopDis == 0) {
+				clearInterval(timer);
+			}
+		},18);
+	}
+}
+
+
 function loadEvents() {
 	prepareGallary();
 	highLightPage();
+	backToTop();
 }
 // addLoadEvent(highLightPage);
 // addLoadEvent(prepareGallary);
