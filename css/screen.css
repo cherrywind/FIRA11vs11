@@ -479,7 +479,33 @@ a {
 	color: #555;
 	line-height: 1.4em;
 }
-
+#sidebar #joinus .notice {
+	margin: 6px 31px;
+	/*text-align: center;*/
+	padding: 0 15px 20px 15px;
+	border: 6px solid #c1c1c1;
+	border-radius: 6px;
+	/*border-left: 2px solid purple;*/
+	/*border-right: 2px solid purple;*/
+}
+/*-------------“下载报名表”的样式-----------------------------*/
+.download {
+	color: #fff;
+	padding: 10px 16px;
+	/*border: 2px solid #000;*/
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-o-border-radius: 4px;
+	border-radius: 22px;
+	background: #458b00;
+	display: inline-block;
+}
+a.download:hover {	/*在index.html、home.html、joinus.html中有*/
+	background: #5c307d;
+}
+#sidebar .download {
+	margin: -6px 36px;
+}
 /*------------(通用)footer-------------------------------------*/
 #footer {
 	clear: both;
@@ -659,8 +685,16 @@ a {
 }
 #joinus #main-content-wrapper #notice #section3 {
 	width: 580px;
-	top: 600px;
+	top: 590px;
 	left: 370px;
+}
+#joinus #main-content-wrapper #notice #section4 {
+	top: 690px;
+	left: 820px;
+}
+#joinus #main-content-wrapper #notice #section4 a {
+	color: #fff;
+	font-weight: normal;
 }
 #joinus #main-content-wrapper #notice h3 {
 	font-size: 17px;
